@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.resumeninterfaces.views.CardyOtrosView
 import com.example.resumeninterfaces.views.DetailView
 import com.example.resumeninterfaces.views.InicioListas
 import com.example.resumeninterfaces.views.HomeView
@@ -19,6 +20,9 @@ fun NavManager(){
         }
         composable("Home2"){
             HomeView(navController)
+        }
+        composable("Otros"){
+            CardyOtrosView(navController)
         }
         composable("Detail/{id}/?{opcional}", arguments = listOf(
             navArgument("id"){

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -51,5 +52,6 @@ fun ContentDetailView(navController: NavController, id: Int, opcional: String){
         TitleView(name = "DetailView")
         TitleView(name = id.toString())
         TitleView(name = opcional)
+        Button(onClick = { navController.navigate("Otros") }) { }
     }
 }
