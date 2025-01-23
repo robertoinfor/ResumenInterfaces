@@ -1,28 +1,30 @@
 package com.example.resumeninterfaces.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.resumeninterfaces.viewModel.SharedViewModel
 import com.example.resumeninterfaces.views.CardyOtrosView
 import com.example.resumeninterfaces.views.DetailView
 import com.example.resumeninterfaces.views.InicioListas
 import com.example.resumeninterfaces.views.HomeView
 
 @Composable
-fun NavManager(){
+fun NavManager(viewModel: SharedViewModel){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "Home") {
         composable("Home") {
-            InicioListas(navController)
+            InicioListas(navController, viewModel)
         }
         composable("Home2"){
-            HomeView(navController)
+            HomeView(navController, viewModel)
         }
         composable("Otros"){
-            CardyOtrosView(navController)
+            CardyOtrosView(navController, viewModel)
         }
         composable("Detail/{id}/?{opcional}", arguments = listOf(
             navArgument("id"){

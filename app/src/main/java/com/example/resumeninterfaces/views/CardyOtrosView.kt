@@ -29,10 +29,11 @@ import com.example.resumeninterfaces.components.MainIconButton
 import com.example.resumeninterfaces.components.MainTextField
 import com.example.resumeninterfaces.components.SpaceH
 import com.example.resumeninterfaces.components.TitleBar
+import com.example.resumeninterfaces.viewModel.SharedViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CardyOtrosView(navController: NavController) {
+fun CardyOtrosView(navController: NavController, viewModel: SharedViewModel) {
     Scaffold(topBar = {
         CenterAlignedTopAppBar(
             title = { Text(text = "App descuentos", color = Color.White) },

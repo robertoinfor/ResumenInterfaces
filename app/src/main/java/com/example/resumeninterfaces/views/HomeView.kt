@@ -26,11 +26,12 @@ import com.example.resumeninterfaces.components.MainButton
 import com.example.resumeninterfaces.components.MainIconButton
 import com.example.resumeninterfaces.components.TitleBar
 import com.example.resumeninterfaces.components.TitleView
+import com.example.resumeninterfaces.viewModel.SharedViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeView(navController: NavController){
+fun HomeView(navController: NavController, viewModel: SharedViewModel){
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -60,9 +61,9 @@ fun ContentHomeView(navController: NavController){
     var opcional by remember {
         mutableStateOf(value = "")
     }
-    Column (modifier = Modifier
-        .fillMaxSize()
-        .wrapContentSize(Alignment.Center)
+        Column (modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center)
     ){
         TitleView(name = "HomeView")
         TextField(value = opcional, onValueChange = {opcional = it}, label = { Text(text="Opcional") } )

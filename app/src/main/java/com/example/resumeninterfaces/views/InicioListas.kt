@@ -20,6 +20,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -30,12 +31,16 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.resumeninterfaces.components.TitleBar
 import com.example.resumeninterfaces.data.SampleData
+import com.example.resumeninterfaces.viewModel.SharedViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun InicioListas(navController: NavController) {
+fun InicioListas(navController: NavController, viewController: SharedViewModel) {
     var numero by remember {
         mutableStateOf(0)
+    }
+    var color by remember {
+        mutableIntStateOf(0)
     }
     Scaffold {
         TitleBar(name = "Lista")
@@ -49,7 +54,7 @@ fun InicioListas(navController: NavController) {
             SpacerH()
             LazyRow {
                 items(SampleData.elementos.size) { index: Int ->
-                    Circulo(color = SampleData.elementos[index])
+                    Circulo(color = SampleData.elementos.get(color))
                 }
             }
 
@@ -59,6 +64,7 @@ fun InicioListas(navController: NavController) {
                     .wrapContentSize(Alignment.Center)
             ) {
                 Button(onClick = {
+                    color = viewController.generateLottoNumbers(SampleData)
                     numero++
                 }) {
                     Text(text = "aniadir")
@@ -72,7 +78,6 @@ fun InicioListas(navController: NavController) {
                     .wrapContentSize(Alignment.Center)
             ) {
                 Button(onClick = { navController.navigate("Home2") }) {
-                    
                 }
             }
         }
